@@ -12,7 +12,7 @@ let manager = GoogleTranslate(apiKey: "",
                               userLanguage: "en")
 let group = DispatchGroup()
 
-manager.errorHandler = {
+let errorHandler: (String) -> () = {
     print($0)
     group.leave()
 }
@@ -20,7 +20,7 @@ manager.errorHandler = {
 // Load all supported languages
 // must be preformed after init else error checking will fail
 group.enter()
-manager.loadSupportedLanguages(onComplete: group.leave)
+manager.loadSupportedLanguages(onComplete: group.leave, errorHandler: errorHandler)
 group.wait()
 
 print("All languages", manager.supportedLanguages[.base]!)
@@ -34,7 +34,7 @@ print("Languages not supported by nmt", manager.supportedLanguages[.base]!.filte
 var detectP = manager.defaultDetectParams()
 detectP.text = ["Je vous remercie", "Hello"]
 group.enter()
-manager.detect(params: detectP){ result in
+manager.detect(params: detectP, errorHandler: errorHandler){ result in
     for i in 0..<result.count {
         print("Detected: \(detectP.text[i])")
         for detected in result[i] {
@@ -44,6 +44,7 @@ manager.detect(params: detectP){ result in
     }
     group.leave()
 }
+group.wait()
 
 // Translate example
 var translateP = manager.defaultTranslateParams()
@@ -52,7 +53,7 @@ translateP.target = "fr"
 translateP.source = "en"
 translateP.model = .nmt
 group.enter()
-manager.translate(params: translateP){ result in
+manager.translate(params: translateP, errorHandler: errorHandler){ result in
     for i in 0..<result.count {
         print("Translated: \(translateP.text[i])")
         print("  To: \(result[i].translatedText)")

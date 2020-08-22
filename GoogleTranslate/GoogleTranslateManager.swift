@@ -24,9 +24,6 @@ open class GoogleTranslate{
     /// Supported languages for models [code: name]
     public var supportedLanguages: [TranslateModel:[String:String]] = [:]
     
-    /// Default error handler when error is encountered during http request
-    public var errorHandler: (_ error: String) -> () = { NSLog("%s", $0) }
-    
     /// Initialize a new manager with the api key and user language provided
     public init(apiKey: String, userLanguage: String){
         self.apiKey = apiKey
@@ -54,6 +51,7 @@ open class GoogleTranslate{
     ///   - params: A `TranslateParams`
     ///   - resultHandler: For processing translation result for each input
     public func translate(params: TranslateParams,
+        errorHandler: @escaping (_ error: String) -> (),
         resultHandler: @escaping (_ result: [TranslateResponseTranslation]) -> () ){
         /// Params checking
         if params.text.isEmpty {
@@ -82,6 +80,7 @@ open class GoogleTranslate{
     ///   - params: A DetectParams
     ///   - resultHandler: For processing the list of detected languages for each input
     public func detect(params: DetectParams,
+        errorHandler: @escaping (_ error: String) -> (),
         resultHandler: @escaping (_ result: [[DetectResponseResult]]) -> () ){
         /// Params checking
         if params.text.isEmpty {
@@ -99,6 +98,7 @@ open class GoogleTranslate{
     ///   - params: A `LanguagesParams`
     ///   - resultHandler: For processing the list of languages returned
     public func getSupportedLanguages(params: LanguagesParams,
+        errorHandler: @escaping (_ error: String) -> (),
         resultHandler: @escaping (_ result: [LanguagesResponseLanguage]) -> () ){
         /// No error checking for target language since languages are not loaded
         sendRequest(urlString: GoogleTranslate.buildLanguagesUrlBase(params: params), 
@@ -109,14 +109,15 @@ open class GoogleTranslate{
     
     /// Populate supported languages
     /// - Parameter onComplete: task complete notifier
-    public func loadSupportedLanguages(onComplete: @escaping ()->()){
+    public func loadSupportedLanguages(onComplete: @escaping ()->(),
+        errorHandler: @escaping (_ error: String) -> ()){
         let group = DispatchGroup()
         var params = defaultLanguageParams()
         params.target = userLanguage
         for model in [TranslateModel.base, TranslateModel.nmt] {
             params.model = model
             group.enter()
-            getSupportedLanguages(params: params){
+            getSupportedLanguages(params: params, errorHandler: errorHandler){
                 var languages: [String: String] = [:]
                 for l in $0 {
                     languages[l.language] = l.name ?? l.language
