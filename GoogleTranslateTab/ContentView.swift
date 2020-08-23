@@ -137,7 +137,7 @@ struct ContentView: View {
         translateManager.loadSupportedLanguages(onComplete: {
             for m in self.translateManager.supportedLanguages{
                 var loaded: [String] = []
-                for l in m.value {
+                for l in m.value.sorted(by: { $0.key < $1.key }) {
                     if loaded.contains(l.value){
                         self.translateManager.supportedLanguages[m.key]![l.key] = nil
                     }
