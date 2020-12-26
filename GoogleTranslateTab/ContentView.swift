@@ -66,7 +66,9 @@ struct ContentView: View {
                 Button(action: {
                     self.savePref()
                     self.translateStart()
-                }, label: { Text("Translate") }).disabled(!loaded)
+                }, label: { Text("Translate") })
+                .disabled(!loaded)
+                .keyboardShortcut(.return)
                 
                 MenuButton("•••"){
                     MenuButton("Model"){
