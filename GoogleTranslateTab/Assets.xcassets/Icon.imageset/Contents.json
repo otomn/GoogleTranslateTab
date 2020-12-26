@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icon_black.png",
+      "filename" : "icon_black_small.png",
       "idiom" : "mac"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "icon_white-1.png",
+      "filename" : "icon_white_small.png",
       "idiom" : "mac"
     }
   ],
