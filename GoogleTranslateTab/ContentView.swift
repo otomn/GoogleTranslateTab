@@ -27,6 +27,85 @@ struct ContentView: View {
     }
     
     var body: some View {
+        if #available(OSX 11.0, *) {
+            body_11_0
+        } else {
+            body_10_15
+        }
+    }
+    
+    @available(OSX 11.0, *)
+    var body_11_0: some View{
+        VStack(alignment: .leading) {
+            HStack {
+                
+                Picker(selection: $fromLan, label: Text("From")) {
+                    ForEach(0 ..< languageCodes.count, id: \.self){
+                        Text(self.languagesMap[self.languageCodes[$0]]!)
+                            .tag(self.languageCodes[$0])
+                    }
+                    Text("Auto Detect" + 
+                        (detectedLan == "" ? "" : " (\(detectedLan))")).tag("auto")
+                    }.disabled(!loaded).id(languagesMap)
+                
+                Button(action: {
+                    if self.fromLan != "auto" {
+                        let temp = self.fromLan
+                        self.fromLan = self.toLan
+                        self.toLan = temp
+                    }
+                }, label: { Text("􀄭") }).disabled(!loaded)
+                
+                Picker(selection: $toLan, label: Text("To")) {
+                    ForEach(0 ..< languageCodes.count, id: \.self){
+                        Text(self.languagesMap[self.languageCodes[$0]]!)
+                            .tag(self.languageCodes[$0])
+                    }.id(languagesMap)
+                }.disabled(!loaded)
+                
+                Button(action: {
+                    self.savePref()
+                    self.translateStart()
+                }, label: { Text("Translate") }).disabled(!loaded)
+                
+                MenuButton("•••"){
+                    MenuButton("Model"){
+                        Toggle(isOn: Binding(get: { 
+                            self.model == GoogleTranslate.TranslateModel.nmt
+                        }, set: {
+                            if $0 {
+                                self.model = GoogleTranslate.TranslateModel.nmt
+                                self.reloadLanguages()
+                            }
+                        })) {
+                            Text("Neural Machine Translation")
+                        }
+                        Toggle(isOn: Binding(get: { 
+                            self.model == GoogleTranslate.TranslateModel.base
+                        }, set: {
+                            if $0 {
+                                self.model = GoogleTranslate.TranslateModel.base
+                                self.reloadLanguages()
+                            }
+                        })) {
+                            Text("Phrase-Based Machine Translation")
+                        }
+                    }
+                    Button(action: {
+                        NSApplication.shared.terminate(self)
+                    }, label: { Text("Quit") })
+                }
+                .scaledToFit()
+                .menuButtonStyle(BorderlessButtonMenuButtonStyle() )
+            }
+            TextField("Translate From", text: $translateFrom).disabled(!loaded)
+            TextField("Translate To", text: $translateTo)
+        }
+        .padding(.all, 10.0)
+        .onAppear(perform: onload)
+    }
+    
+    var body_10_15: some View {
         VStack(alignment: .leading) {
             HStack {
                 

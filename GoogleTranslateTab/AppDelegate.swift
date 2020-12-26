@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         popover = NSPopover()
         popover.contentSize = NSSize(width: 600, height: 500)
-        popover.behavior = .applicationDefined
+        popover.behavior = .transient
         popover.contentViewController = NSHostingController(rootView: contentView)
         
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
