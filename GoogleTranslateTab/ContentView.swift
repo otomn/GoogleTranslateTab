@@ -104,14 +104,18 @@ struct ContentView: View {
             HStack{
                 TextEditor(text: $translateFrom)
                     .disabled(!loaded)
-                    .frame(width: 600, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .leading)
+                    .font(.body)
+                    .frame(height: 100)
             }
-            .padding(10)
+            .padding(5)
             .background(RoundedRectangle(cornerRadius: 5, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/).fill(Color(NSColor.textBackgroundColor)))
             HStack{
-                TextField("Translate To", text: $translateTo).textFieldStyle(PlainTextFieldStyle())
+                TextEditor(text: $translateTo)
+                    .disabled(!loaded)
+                    .font(.body)
+                    .frame(height: 100)
             }
-            .padding(10)
+            .padding(5)
             .background(RoundedRectangle(cornerRadius: 5, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/).fill(Color(NSColor.textBackgroundColor)))
         }
         .padding(.all, 10.0)
