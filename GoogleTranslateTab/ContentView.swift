@@ -101,8 +101,18 @@ struct ContentView: View {
                 .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false) )
                 .frame(width: 40)
             }
-            TextField("Translate From", text: $translateFrom).disabled(!loaded)
-            TextField("Translate To", text: $translateTo)
+            HStack{
+                TextEditor(text: $translateFrom)
+                    .disabled(!loaded)
+                    .frame(width: 600, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .leading)
+            }
+            .padding(10)
+            .background(RoundedRectangle(cornerRadius: 5, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/).fill(Color(NSColor.textBackgroundColor)))
+            HStack{
+                TextField("Translate To", text: $translateTo).textFieldStyle(PlainTextFieldStyle())
+            }
+            .padding(10)
+            .background(RoundedRectangle(cornerRadius: 5, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/).fill(Color(NSColor.textBackgroundColor)))
         }
         .padding(.all, 10.0)
         .onAppear(perform: onload)
