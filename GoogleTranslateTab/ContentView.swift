@@ -87,6 +87,7 @@ struct ContentView: View {
                     }, label: { Text("Quit") })
                 }
                 .scaledToFit()
+                .menuButtonStyle(BorderlessButtonMenuButtonStyle() )
             }
             TextField("Translate From", text: $translateFrom).disabled(!loaded)
             TextField("Translate To", text: $translateTo)
