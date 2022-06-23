@@ -215,7 +215,7 @@ extension GoogleTranslate {
     /// If the model is nmt, 
     /// and the requested language translation pair is not supported for the NMT model, 
     /// then the request is translated using the PBMT model.
-    public enum TranslateModel: LosslessStringConvertible{
+    public enum TranslateModel: LosslessStringConvertible, CaseIterable {
         
         /// Phrase-Based Machine Translation (PBMT) model
         case base

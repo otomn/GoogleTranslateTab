@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,10 +17,26 @@
 		DA87BD1824D88ADD001925F3 /* GoogleTranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87BD0824D87C86001925F3 /* GoogleTranslateManager.swift */; };
 		DA87BD1A24D8CA94001925F3 /* GoogleTranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87BD1924D8CA94001925F3 /* GoogleTranslateApi.swift */; };
 		DA87BD1B24D8CDA7001925F3 /* GoogleTranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87BD1924D8CA94001925F3 /* GoogleTranslateApi.swift */; };
+		DAC6022728636C8600903E1E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC6022628636C8600903E1E /* main.swift */; };
+		DAC6022B28636CB200903E1E /* GoogleTranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87BD0824D87C86001925F3 /* GoogleTranslateManager.swift */; };
+		DAC6022C28636CB200903E1E /* GoogleTranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87BD1924D8CA94001925F3 /* GoogleTranslateApi.swift */; };
+		DAC6022F28636DB700903E1E /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = DAC6022E28636DB700903E1E /* ArgumentParser */; };
+		DAC6023228636EE200903E1E /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = DAC6023128636EE200903E1E /* ArgumentParser */; };
+		DAC6023528636EF600903E1E /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = DAC6023428636EF600903E1E /* ArgumentParser */; };
+		DAF35CFF2863720500735BF6 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = DAF35CFE2863720500735BF6 /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DA87BD0E24D88AB3001925F3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		DAC6022228636C8600903E1E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -45,6 +61,8 @@
 		DA87BD1224D88AB3001925F3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		DA87BD1924D8CA94001925F3 /* GoogleTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslateApi.swift; sourceTree = "<group>"; };
 		DAAC41F524F0BBDC00D8CCDF /* GoogleTranslateTabDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoogleTranslateTabDebug.entitlements; sourceTree = "<group>"; };
+		DAC6022428636C8600903E1E /* GoogleTranslateConsole */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GoogleTranslateConsole; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC6022628636C8600903E1E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC6023528636EF600903E1E /* ArgumentParser in Frameworks */,
+				DAC6023228636EE200903E1E /* ArgumentParser in Frameworks */,
+				DAC6022F28636DB700903E1E /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +80,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC6022128636C8600903E1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAF35CFF2863720500735BF6 /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +100,9 @@
 				DA87BD1724D88AC6001925F3 /* GoogleTranslate */,
 				DA0FD6AC24D76D580099F34A /* GoogleTranslateTab */,
 				DA87BD1124D88AB3001925F3 /* ConsoleTest */,
+				DAC6022528636C8600903E1E /* GoogleTranslateConsole */,
 				DA0FD6AB24D76D580099F34A /* Products */,
+				DAF35CFD2863720500735BF6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +111,7 @@
 			children = (
 				DA0FD6AA24D76D580099F34A /* GoogleTranslateTab.app */,
 				DA87BD1024D88AB3001925F3 /* ConsoleTest */,
+				DAC6022428636C8600903E1E /* GoogleTranslateConsole */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +156,21 @@
 			path = GoogleTranslate;
 			sourceTree = "<group>";
 		};
+		DAC6022528636C8600903E1E /* GoogleTranslateConsole */ = {
+			isa = PBXGroup;
+			children = (
+				DAC6022628636C8600903E1E /* main.swift */,
+			);
+			path = GoogleTranslateConsole;
+			sourceTree = "<group>";
+		};
+		DAF35CFD2863720500735BF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +187,11 @@
 			dependencies = (
 			);
 			name = GoogleTranslateTab;
+			packageProductDependencies = (
+				DAC6022E28636DB700903E1E /* ArgumentParser */,
+				DAC6023128636EE200903E1E /* ArgumentParser */,
+				DAC6023428636EF600903E1E /* ArgumentParser */,
+			);
 			productName = GoogleTranslateTab;
 			productReference = DA0FD6AA24D76D580099F34A /* GoogleTranslateTab.app */;
 			productType = "com.apple.product-type.application";
@@ -161,14 +213,35 @@
 			productReference = DA87BD1024D88AB3001925F3 /* ConsoleTest */;
 			productType = "com.apple.product-type.tool";
 		};
+		DAC6022328636C8600903E1E /* GoogleTranslateConsole */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAC6022828636C8600903E1E /* Build configuration list for PBXNativeTarget "GoogleTranslateConsole" */;
+			buildPhases = (
+				DAC6022028636C8600903E1E /* Sources */,
+				DAC6022128636C8600903E1E /* Frameworks */,
+				DAC6022228636C8600903E1E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DAF35D012863724E00735BF6 /* PBXTargetDependency */,
+			);
+			name = GoogleTranslateConsole;
+			packageProductDependencies = (
+				DAF35CFE2863720500735BF6 /* ArgumentParser */,
+			);
+			productName = GoogleTranslateConsole;
+			productReference = DAC6022428636C8600903E1E /* GoogleTranslateConsole */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DA0FD6A224D76D580099F34A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = Toby;
 				TargetAttributes = {
 					DA0FD6A924D76D580099F34A = {
@@ -176,6 +249,9 @@
 					};
 					DA87BD0F24D88AB3001925F3 = {
 						CreatedOnToolsVersion = 11.6;
+					};
+					DAC6022328636C8600903E1E = {
+						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
@@ -188,12 +264,18 @@
 				Base,
 			);
 			mainGroup = DA0FD6A124D76D580099F34A;
+			packageReferences = (
+				DAC6022D28636DB700903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				DAC6023028636EE200903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				DAC6023328636EF600903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = DA0FD6AB24D76D580099F34A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				DA0FD6A924D76D580099F34A /* GoogleTranslateTab */,
 				DA87BD0F24D88AB3001925F3 /* ConsoleTest */,
+				DAC6022328636C8600903E1E /* GoogleTranslateConsole */,
 			);
 		};
 /* End PBXProject section */
@@ -233,7 +315,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DAC6022028636C8600903E1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC6022C28636CB200903E1E /* GoogleTranslateApi.swift in Sources */,
+				DAC6022728636C8600903E1E /* main.swift in Sources */,
+				DAC6022B28636CB200903E1E /* GoogleTranslateManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DAF35D012863724E00735BF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = DAF35D002863724E00735BF6 /* ArgumentParser */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DA0FD6B624D76D5B0099F34A /* Main.storyboard */ = {
@@ -273,6 +372,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -333,6 +433,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -365,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GoogleTranslateTab/GoogleTranslateTabDebug.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GoogleTranslateTab/Preview Content\"";
@@ -386,6 +488,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GoogleTranslateTab/GoogleTranslateTab.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GoogleTranslateTab/Preview Content\"";
@@ -406,6 +509,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConsoleTest/ConsoleTestDebug.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -416,7 +520,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConsoleTest/ConsoleTestRelease.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DAC6022928636C8600903E1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DAC6022A28636C8600903E1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -452,7 +579,71 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		DAC6022828636C8600903E1E /* Build configuration list for PBXNativeTarget "GoogleTranslateConsole" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAC6022928636C8600903E1E /* Debug */,
+				DAC6022A28636C8600903E1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DAC6022D28636DB700903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		DAC6023028636EE200903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		DAC6023328636EF600903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DAC6022E28636DB700903E1E /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAC6022D28636DB700903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		DAC6023128636EE200903E1E /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAC6022D28636DB700903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		DAC6023428636EF600903E1E /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAC6022D28636DB700903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		DAF35CFE2863720500735BF6 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAC6022D28636DB700903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		DAF35D002863724E00735BF6 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAC6022D28636DB700903E1E /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DA0FD6A224D76D580099F34A /* Project object */;
 }
