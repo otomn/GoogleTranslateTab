@@ -50,9 +50,11 @@ struct GoogleTranslateConsole: ParsableCommand {
             group.leave()
             _exit(1)
         }
-        group.enter()
-        manager.loadSupportedLanguages(onComplete: group.leave, errorHandler: errorHandler)
-        group.wait()
+        if list || detect {
+            group.enter()
+            manager.loadSupportedLanguages(onComplete: group.leave, errorHandler: errorHandler)
+            group.wait()
+        }
         
         if list {
             manager.supportedLanguages[mode]!.keys.sorted().forEach {
@@ -61,12 +63,15 @@ struct GoogleTranslateConsole: ParsableCommand {
             return
         }
         
+        if isatty(FileHandle.standardInput.fileDescriptor) == 0 {
+            while let line = readLine() {
+                words.append(line)
+            }
+        }
+        
         if detect {
             var detectP = manager.defaultDetectParams()
             detectP.text = words
-            while let line = readLine() {
-                detectP.text.append(line)
-            }
             group.enter()
             manager.detect(params: detectP, errorHandler: errorHandler){ result in
                 for i in 0..<result.count {
@@ -87,13 +92,8 @@ struct GoogleTranslateConsole: ParsableCommand {
         translateP.target = to
         translateP.source = from
         translateP.model = mode
-        if isatty(FileHandle.standardInput.fileDescriptor) == 0 {
-            while let line = readLine() {
-                translateP.text.append(line)
-            }
-        }
         group.enter()
-        manager.translate(params: translateP, errorHandler: errorHandler){ result in
+        manager.translate(params: translateP, noLanguageCheck: true, errorHandler: errorHandler){ result in
             for i in 0..<result.count {
                 print(result[i].translatedText)
             }

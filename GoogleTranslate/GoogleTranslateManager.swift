@@ -51,6 +51,7 @@ open class GoogleTranslate{
     ///   - params: A `TranslateParams`
     ///   - resultHandler: For processing translation result for each input
     public func translate(params: TranslateParams,
+        noLanguageCheck: Bool = false,
         errorHandler: @escaping (_ error: String) -> (),
         resultHandler: @escaping (_ result: [TranslateResponseTranslation]) -> () ){
         /// Params checking
@@ -58,16 +59,18 @@ open class GoogleTranslate{
             resultHandler([])
             return
         }
-        /// Google translate will use base if the language is not supported by nmt
-        if let source = params.source {
-            if supportedLanguages[.base]?[source] == nil {
-                errorHandler("Source language is invalid")
+        if (!noLanguageCheck) {
+            /// Google translate will use base if the language is not supported by nmt
+            if let source = params.source {
+                if supportedLanguages[.base]?[source] == nil {
+                    errorHandler("Source language is invalid")
+                    return
+                }
+            }
+            if supportedLanguages[.base]?[params.target] == nil {
+                errorHandler("Target language is invalid")
                 return
             }
-        }
-        if supportedLanguages[.base]?[params.target] == nil {
-            errorHandler("Target language is invalid")
-            return
         }
         sendRequest(urlString: GoogleTranslate.buildTranslateRequestUrl(params: params), 
                     type: TranslateResponse.self, 
