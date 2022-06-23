@@ -11,15 +11,6 @@ import Foundation
 
 extension GoogleTranslate.TranslateModel: ExpressibleByArgument {}
 
-func hasDataAvailable() -> Bool {
-    guard let inputStream = InputStream(fileAtPath: "/dev/stdin") else {
-        return false
-    }
-    inputStream.open()
-    defer { inputStream.close() }
-    return inputStream.hasBytesAvailable
-}
-
 struct GoogleTranslateConsole: ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "gtrans",
@@ -96,7 +87,7 @@ struct GoogleTranslateConsole: ParsableCommand {
         translateP.target = to
         translateP.source = from
         translateP.model = mode
-        if hasDataAvailable() {
+        if isatty(FileHandle.standardInput.fileDescriptor) == 0 {
             while let line = readLine() {
                 translateP.text.append(line)
             }
